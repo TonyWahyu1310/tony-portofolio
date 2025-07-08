@@ -5,90 +5,127 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portofolio Tony</title>
   <style>
+    /* Color Variables for Better Contrast */
+    :root {
+      --color-bg: #ffffff;
+      --color-bg-alt: #f2f2f2;
+      --color-text: #222222;
+      --color-primary: #005fa3;
+      --color-primary-hover: #004080;
+      --color-nav-bg: rgba(255,255,255,0.95);
+      --color-card-bg: #ffffff;
+      --color-border: #cccccc;
+    }
+
     /* Global Styles */
     body {
       margin: 0;
+      background: var(--color-bg);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
-      color: #333;
+      color: var(--color-text);
       scroll-behavior: smooth;
     }
-    nav {
-      position: fixed;
-      width: 100%;
-      background: rgba(255,255,255,0.9);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      z-index: 1000;
+    a {
+      color: var(--color-primary);
+      text-decoration: none;
     }
-    .container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 0 1rem;
+    a:hover {
+      text-decoration: underline;
     }
 
-    /* Header & Navigation */
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--color-nav-bg);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+      z-index: 1000;
+    }
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+    }
+    nav .brand a {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: var(--color-text);
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      font-weight: 600;
+      color: var(--color-text);
+    }
+    nav ul li a:hover {
+      color: var(--color-primary-hover);
+    }
+
+    /* Header */
     header {
       height: 100vh;
       background: url('https://source.unsplash.com/1600x900/?nature,code') center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
-      text-shadow: 0 1px 3px rgba(0,0,0,0.7);
+      color: var(--color-bg);
+      text-shadow: 0 2px 4px rgba(0,0,0,0.7);
     }
-    nav .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 0;
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
     }
-    nav a {
-      margin-left: 1rem;
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-    }
-    nav a:hover {
-      color: #0077cc;
+    header p {
+      font-size: 1.25rem;
     }
 
     /* Sections */
     section {
-      padding: 4rem 0;
+      padding: 4rem 1rem;
     }
     #about, #projects, #contact {
-      background: #f9f9f9;
+      background: var(--color-bg-alt);
     }
-    h1, h2 {
+    h2 {
       text-align: center;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
     }
     .about-text {
       max-width: 700px;
       margin: 0 auto;
       font-style: italic;
+      color: var(--color-text);
     }
 
     /* Projects */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
     }
     .project-card {
-      background: white;
+      background: var(--color-card-bg);
+      border: 1px solid var(--color-border);
       border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       overflow: hidden;
-      transition: transform 0.2s;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
     .project-card:hover {
       transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
     .project-card img {
       width: 100%;
-      height: 150px;
+      height: 160px;
       object-fit: cover;
     }
     .project-card .card-body {
@@ -96,6 +133,11 @@
     }
     .project-card h3 {
       margin: 0 0 0.5rem;
+      color: var(--color-text);
+    }
+    .project-card p {
+      margin: 0;
+      color: var(--color-text);
     }
 
     /* Contact */
@@ -104,34 +146,43 @@
       margin: 0 auto;
       display: flex;
       flex-direction: column;
+      gap: 1rem;
     }
     .contact-form input,
     .contact-form textarea {
       padding: 0.75rem;
-      margin-bottom: 1rem;
-      border: 1px solid #ccc;
+      border: 1px solid var(--color-border);
       border-radius: 4px;
       font-size: 1rem;
+      color: var(--color-text);
+      background: var(--color-bg);
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 4px rgba(0,95,163,0.5);
     }
     .contact-form button {
       padding: 0.75rem;
       border: none;
       border-radius: 4px;
-      background: #0077cc;
-      color: white;
+      background: var(--color-primary);
+      color: var(--color-bg);
       font-size: 1rem;
       cursor: pointer;
-      transition: background 0.2s;
+      transition: background 0.3s;
     }
     .contact-form button:hover {
-      background: #005fa3;
+      background: var(--color-primary-hover);
     }
 
+    /* Footer */
     footer {
       text-align: center;
-      padding: 2rem 0;
-      background: #333;
-      color: white;
+      padding: 2rem 1rem;
+      background: var(--color-primary);
+      color: var(--color-bg);
     }
 
     /* Responsive Nav Toggle */
@@ -143,7 +194,7 @@
     .menu-toggle span {
       width: 25px;
       height: 3px;
-      background: #333;
+      background: var(--color-text);
       margin: 4px 0;
     }
     @media (max-width: 768px) {
@@ -162,7 +213,7 @@
       nav ul.show {
         display: flex;
       }
-      nav a {
+      nav ul li {
         margin: 0.5rem 0;
       }
     }
@@ -195,56 +246,45 @@
   </header>
 
   <section id="about">
-    <div class="container">
-      <h2>Tentang Saya</h2>
-      <p class="about-text">
-        Dalam setiap baris kodemu, kutemukan bait-bait puisi yang mengalir, menyatu dengan logika dan keindahan. Aku adalah Tony, seorang mahasiswa yang haus akan makna dan harmoni, menelusuri jejak pikiran dalam dunia filsafat Islam.
-      </p>
-    </div>
+    <h2>Tentang Saya</h2>
+    <p class="about-text">Dalam setiap baris kodemu, kutemukan bait-bait puisi yang mengalir... menelusuri jejak pikiran dalam dunia filsafat Islam.</p>
   </section>
 
   <section id="projects">
-    <div class="container">
-      <h2>Proyek Terbaru</h2>
-      <div class="projects-grid">
-        <!-- Project 1 -->
-        <div class="project-card">
-          <img src="https://source.unsplash.com/collection/190727/400x300" alt="Proyek 1">
-          <div class="card-body">
-            <h3>Web Riset Filsafat</h3>
-            <p>Platform interaktif untuk mengulas pemikiran utama Avicenna hingga Al-Ghazali.</p>
-          </div>
+    <h2>Proyek Terbaru</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <img src="https://source.unsplash.com/collection/190727/400x300" alt="Proyek 1">
+        <div class="card-body">
+          <h3>Web Riset Filsafat</h3>
+          <p>Platform interaktif untuk mengulas pemikiran utama Avicenna hingga Al-Ghazali.</p>
         </div>
-        <!-- Project 2 -->
-        <div class="project-card">
-          <img src="https://source.unsplash.com/collection/190728/400x300" alt="Proyek 2">
-          <div class="card-body">
-            <h3>Blog Puitis</h3>
-            <p>Kumpulan esai singkat yang merangkai puisi dan renungan filosofis.</p>
-          </div>
+      </div>
+      <div class="project-card">
+        <img src="https://source.unsplash.com/collection/190728/400x300" alt="Proyek 2">
+        <div class="card-body">
+          <h3>Blog Puitis</h3>
+          <p>Kumpulan esai singkat yang merangkai puisi dan renungan filosofis.</p>
         </div>
-        <!-- Project 3 -->
-        <div class="project-card">
-          <img src="https://source.unsplash.com/collection/190726/400x300" alt="Proyek 3">
-          <div class="card-body">
-            <h3>Visualisasi Ide</h3>
-            <p>Peta pikiran dinamis untuk menjelajah konsep-konsep kunci filsafat.</p>
-          </div>
+      </div>
+      <div class="project-card">
+        <img src="https://source.unsplash.com/collection/190726/400x300" alt="Proyek 3">
+        <div class="card-body">
+          <h3>Visualisasi Ide</h3>
+          <p>Peta pikiran dinamis untuk menjelajah konsep-konsep kunci filsafat.</p>
         </div>
       </div>
     </div>
   </section>
 
   <section id="contact">
-    <div class="container">
-      <h2>Kontak</h2>
-      <form class="contact-form" action="mailto:tony@example.com" method="post" enctype="text/plain">
-        <input type="text" name="name" placeholder="Nama Anda" required>
-        <input type="email" name="email" placeholder="Email Anda" required>
-        <textarea name="message" rows="5" placeholder="Apa yang ingin Anda diskusikan?" required></textarea>
-        <button type="submit">Kirim Pesan</button>
-      </form>
-    </div>
+    <h2>Kontak</h2>
+    <form class="contact-form" action="mailto:tony@example.com" method="post" enctype="text/plain">
+      <input type="text" name="name" placeholder="Nama Anda" required>
+      <input type="email" name="email" placeholder="Email Anda" required>
+      <textarea name="message" rows="5" placeholder="Apa yang ingin Anda diskusikan?" required></textarea>
+      <button type="submit">Kirim Pesan</button>
+    </form>
   </section>
 
   <footer>
